@@ -61,5 +61,41 @@ public class Systeme {
     return false;
   }
   
+  /**
+   * Supprimer un réseau.
+
+   * @param nom Nom du réseau à supprimer
+   * @return Renvoie true si le réseau est supprimé, sinon false
+   */
+  public boolean deleteReseau(String nom) {
+    for (int i = 0; i < this.reseaux.size(); i++) {
+      if (this.reseaux.get(i).getNom().equals(nom)) {
+        this.reseaux.remove(i);
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  /**
+   * Vérifier un réseau.
+
+   * @param nom Nom du réseau à vérifier
+   * @return Renvoie true si le réseau est vérifié, sinon false
+   */
+  public boolean verifierReseau(String nom) {
+    Reseau r = this.getReseau(nom);
+    if (r == null) {
+      return false;
+    }
+    return ReseauVerifier.verifierReseau(r);
+  }
+  
+  /**
+   * Retourne le nombre de réseau du système.
+   */
+  public int nombreReseaux() {
+    return this.reseaux.size();
+  }
 
 }
