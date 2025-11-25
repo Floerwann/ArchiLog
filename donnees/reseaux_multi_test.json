@@ -1,0 +1,58 @@
+{
+  "reseaux": [
+    {
+      "nomReseau": "ReseauTestEntrepriseA",
+      "adresseReseau": "192.168.10.0",
+      "masque": 24,
+      "passerelle": "192.168.10.1",
+
+      "switches": [
+        { "numeroIp": 2, "estManage": true },
+        { "numeroIp": 3, "estManage": false }
+      ],
+
+      "machines": [
+        { "nom": "PC-A1", "numeroIp": 10, "switchIp": 2 },
+        { "nom": "PC-A2", "numeroIp": 11, "switchIp": 2 },
+        { "nom": "Serveur-A-Mail", "numeroIp": 20, "switchIp": 3 }
+      ]
+    },
+
+    {
+      "nomReseau": "ReseauTestEntrepriseB",
+      "adresseReseau": "10.0.0.0",
+      "masque": 24,
+      "passerelle": "10.0.0.1",
+
+      "switches": [
+        { "numeroIp": 2, "estManage": true },
+        { "numeroIp": 3, "estManage": true },
+        { "numeroIp": 4, "estManage": false }
+      ],
+
+      "machines": [
+        { "nom": "PC-B1", "numeroIp": 10, "switchIp": 2 },
+        { "nom": "PC-B2", "numeroIp": 11, "switchIp": 2 },
+        { "nom": "PC-B3", "numeroIp": 12, "switchIp": 4 },
+        { "nom": "Serveur-B-Web", "numeroIp": 50, "switchIp": 3 }
+      ]
+    },
+
+    {
+      "nomReseau": "ReseauTestEntrepriseC",
+      "adresseReseau": "172.16.5.0",
+      "masque": 24,
+      "passerelle": "172.16.5.1",
+
+      "switches": [
+        { "numeroIp": 2, "estManage": false }
+      ],
+
+      "machines": [
+        { "nom": "PC-C1", "numeroIp": 5, "switchIp": 2 },
+        { "nom": "PC-C2", "numeroIp": 6, "switchIp": 2 },
+        { "nom": "PC-C3", "numeroIp": 7, "switchIp": 2 }
+      ]
+    }
+  ]
+}

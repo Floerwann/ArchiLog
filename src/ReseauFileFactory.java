@@ -1,6 +1,6 @@
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -17,12 +17,12 @@ public class ReseauFileFactory {
   /**
    * Méthode qui permet de créer un réseau standard à partir d'un fichier JSON.
 
-   * @param file Fichier JSON avec lequel on veut créer le réseau
+   * @param path Fichier JSON avec lequel on veut créer le réseau
    * @return Retourne la liste de réseau qu'on a crée
    * @throws IOException Exception
    */
-  public static List<Reseau> creerReseauDepuisFichier(File file) throws IOException {
-    String contenu = Files.readString(file.toPath());
+  public static List<Reseau> creerReseauDepuisFichier(String path) throws IOException {
+    String contenu = Files.readString(Paths.get(path));
     JSONObject racine = new JSONObject(contenu);
 
     List<Reseau> liste = new ArrayList<>();
@@ -86,7 +86,6 @@ public class ReseauFileFactory {
           listeSwitchs
       );
 
-      // --- Étape 3 : Vérification ---
       if (!ReseauVerifier.verifierReseau(reseau)) {
         throw new IllegalArgumentException(
             "Le réseau " + adresse + " est invalide."
