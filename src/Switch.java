@@ -1,7 +1,7 @@
 /**
  * Classe Switch.
  */
-class Switch {
+class Switch implements Visitable {
   private Integer numeroIp;
   private Boolean estManage;
 
@@ -30,5 +30,11 @@ class Switch {
 
   public void setEstManage(Boolean estManage) {
     this.estManage = estManage;
+  }
+
+  @Override
+  public void applique(Visiteur unVisiteur) {
+    unVisiteur.agitSur(this);
+    
   }
 }

@@ -1,7 +1,7 @@
 /**
  * Classe Machine.
  */
-class Machine {
+class Machine implements Visitable {
   private Integer numeroIp;
   private String nom;
   private Switch leSwitch;
@@ -41,5 +41,11 @@ class Machine {
 
   public void setLeSwitch(Switch leSwitch) {
     this.leSwitch = leSwitch;
+  }
+
+  @Override
+  public void applique(Visiteur unVisiteur) {
+    unVisiteur.agitSur(this);
+    
   }
 }

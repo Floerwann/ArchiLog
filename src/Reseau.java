@@ -3,7 +3,7 @@ import java.util.List;
 /**
  * Classe Reseau.
  */
-class Reseau {
+class Reseau implements Visitable {
   private String nom;
   private String adresse;
   private String passerelle;
@@ -78,5 +78,22 @@ class Reseau {
 
   public void setLesSwitchs(List<Switch> lesSwitchs) {
     this.lesSwitchs = lesSwitchs;
+  }
+
+
+  @Override
+  public void applique(Visiteur unVisiteur) {
+    unVisiteur.agitSur(this);
+    if (this.lesSwitchs != null) {
+      for (Switch sw : this.lesSwitchs) {
+        sw.applique(unVisiteur);
+      }
+    }
+    if (this.lesMachines != null) {
+      for (Machine mc : this.lesMachines) {
+        mc.applique(unVisiteur);
+      }
+    }
+    
   }
 }

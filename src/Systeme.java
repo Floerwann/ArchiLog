@@ -55,8 +55,8 @@ public class Systeme {
     for (int i = 0; i < this.reseaux.size(); i++) {
       if (this.reseaux.get(i).getNom().equals(nom)) {
         this.reseaux.set(i, rmaj);
+        return true;
       }
-      return true;
     }
     return false;
   }
