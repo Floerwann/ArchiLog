@@ -21,7 +21,7 @@
     {
       "nomReseau": "ReseauTestEntrepriseB",
       "adresseReseau": "10.0.0.0",
-      "masque": 24,
+      "masque": 25,
       "passerelle": "10.0.0.1",
 
       "switches": [
@@ -40,7 +40,7 @@
 
     {
       "nomReseau": "ReseauTestEntrepriseC",
-      "adresseReseau": "172.16.5.0",
+      "adresseReseau": "772.16.5.0",
       "masque": 24,
       "passerelle": "172.16.5.1",
 
