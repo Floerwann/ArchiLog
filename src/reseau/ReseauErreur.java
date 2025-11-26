@@ -1,5 +1,8 @@
-package application;
+package reseau;
 
+/**
+ * Enumération des cas d'erreurs.
+ */
 public enum ReseauErreur {
   ADRESSE_ERREUR,
   MASQUE_INVALIDE,

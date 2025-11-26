@@ -1,5 +1,9 @@
-package application;
+package vues;
 
+import application.Observer;
+import application.Reseau;
+import application.Systeme;
+import reseau.ReseauFactory;
 import java.util.Scanner;
 
 /**

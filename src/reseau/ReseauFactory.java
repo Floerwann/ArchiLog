@@ -1,7 +1,11 @@
-package application;
+package reseau;
 
+import application.Machine;
+import application.Reseau;
+import application.Switch;
 import java.util.ArrayList;
 import java.util.List;
+
 
 /**
  * Classe ReseauFactory qui a pour but de créer un Reseau.

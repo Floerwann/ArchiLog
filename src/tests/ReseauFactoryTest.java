@@ -4,8 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import application.Machine;
 import application.Reseau;
-import application.ReseauFactory;
 import application.Switch;
+import reseau.ReseauFactory;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

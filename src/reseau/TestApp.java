@@ -1,6 +1,7 @@
-package application;
+package reseau;
 
 import java.util.List;
+import application.Reseau;
 
 /**
  * Classe qui permet de vérifier que la classe ReseauFileFactory fonctionne bien.

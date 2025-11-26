@@ -1,4 +1,8 @@
-package application;
+package visiteurs;
+
+import application.Machine;
+import application.Reseau;
+import application.Switch;
 
 /**
  * Interface pour les Visiteurs.

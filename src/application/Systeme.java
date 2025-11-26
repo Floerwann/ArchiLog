@@ -3,6 +3,9 @@ package application;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import reseau.ReseauFileFactory;
+import reseau.ReseauVerifier;
+import visiteurs.Visiteur;
 
 /**
  * Classe Systeme.
@@ -155,9 +158,4 @@ public class Systeme {
       System.out.println("Réseau introuvable: " + nomReseau);
     }
   }
-  
-  
-
-  
-
 }

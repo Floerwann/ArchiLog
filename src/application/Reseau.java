@@ -1,6 +1,8 @@
 package application;
 
 import java.util.List;
+import visiteurs.Visitable;
+import visiteurs.Visiteur;
 
 /**
  * Classe Reseau.

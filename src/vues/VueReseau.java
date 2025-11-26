@@ -1,5 +1,10 @@
-package application;
+package vues;
 
+import application.Machine;
+import application.Observer;
+import application.Reseau;
+import application.Switch;
+import application.Systeme;
 import java.util.Scanner;
 
 /**

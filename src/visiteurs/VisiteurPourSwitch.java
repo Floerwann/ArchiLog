@@ -1,4 +1,8 @@
-package application;
+package visiteurs;
+
+import application.Machine;
+import application.Reseau;
+import application.Switch;
 
 /**
  * Classe Visiteur pour afficher les différentes caractéristiques du Reseau par Switch.

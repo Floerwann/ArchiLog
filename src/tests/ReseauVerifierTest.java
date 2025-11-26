@@ -3,8 +3,8 @@ package tests;
 import static org.junit.jupiter.api.Assertions.*;
 
 import application.Reseau;
-import application.ReseauFactory;
-import application.ReseauVerifier;
+import reseau.ReseauFactory;
+import reseau.ReseauVerifier;
 import org.junit.jupiter.api.Test;
 
 /**

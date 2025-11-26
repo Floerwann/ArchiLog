@@ -1,5 +1,8 @@
-package application;
+package reseau;
 
+import application.Machine;
+import application.Reseau;
+import application.Switch;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -9,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
+
 
 /**
  * Classe ReseauFileFactory qui permet de créer des réseaux à partir de fichier.

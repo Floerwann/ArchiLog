@@ -1,4 +1,8 @@
-package application;
+package visiteurs;
+
+import application.Machine;
+import application.Reseau;
+import application.Switch;
 
 /**
  * Classe Visiteur qui affiche simplement la liste de machine.

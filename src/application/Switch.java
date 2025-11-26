@@ -1,5 +1,8 @@
 package application;
 
+import visiteurs.Visitable;
+import visiteurs.Visiteur;
+
 /**
  * Classe Switch.
  */

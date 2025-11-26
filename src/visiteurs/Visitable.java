@@ -1,4 +1,4 @@
-package application;
+package visiteurs;
 
 /**
  * Interface Visitable pour les éléments visités.
