@@ -1,10 +1,10 @@
 package visiteurs;
 
-import java.util.List;
 import application.Machine;
 import application.Reseau;
 import application.Switch;
-import application.Systeme;
+import java.util.List;
+import systeme.Systeme;
 
 /**
  * Classe TestVisiteur.

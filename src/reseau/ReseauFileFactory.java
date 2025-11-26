@@ -42,14 +42,14 @@ public class ReseauFileFactory {
       int masque = r.getInt("masque");
       String passerelle = r.getString("passerelle");
 
-      // --- Étape 1 : listes temporaires ---
+
       List<Switch> listeSwitchs = new ArrayList<>();
       List<Machine> listeMachines = new ArrayList<>();
 
-      // Map pour retrouver les Switch par leur IP
+
       Map<Integer, Switch> switchMap = new HashMap<>();
 
-      // --- Charger les switchs ---
+
       JSONArray switchesJson = r.getJSONArray("switches");
       for (int j = 0; j < switchesJson.length(); j++) {
         JSONObject s = switchesJson.getJSONObject(j);
@@ -62,7 +62,6 @@ public class ReseauFileFactory {
         switchMap.put(numeroIp, sw);
       }
 
-      // --- Charger les machines ---
       JSONArray machinesJson = r.getJSONArray("machines");
       for (int j = 0; j < machinesJson.length(); j++) {
         JSONObject m = machinesJson.getJSONObject(j);
@@ -82,7 +81,6 @@ public class ReseauFileFactory {
         listeMachines.add(machine);
       }
 
-      // --- Étape 2 : construire le réseau ---
       Reseau reseau = new Reseau(
           nomReseau,
           adresse,

@@ -1,13 +1,14 @@
 package vues;
 
-import application.Observer;
 import application.Reseau;
-import application.Systeme;
-import reseau.ReseauFactory;
 import java.util.Scanner;
+import reseau.ReseauFactory;
+import systeme.Observer;
+import systeme.Systeme;
+
 
 /**
- * Classe de la Vue de la liste des réseaux.
+ * Vue des Reseau.
  */
 public class VueListeReseaux implements Observer {
 
@@ -24,7 +25,7 @@ public class VueListeReseaux implements Observer {
   }
 
   @Override
-  public void mettreAJour() {
+  public void mettreAjour() {
     afficher();
   }
 
@@ -33,7 +34,7 @@ public class VueListeReseaux implements Observer {
    */
   public void afficher() {
     System.out.println("\n===== LISTE DES RÉSEAUX =====");
-
+  
     if (systeme.getLesReseaux().isEmpty()) {
       System.out.println("Aucun réseau pour le moment.");
     } else {
@@ -41,12 +42,13 @@ public class VueListeReseaux implements Observer {
         System.out.println("- " + r.getNom() + " (" + r.getAdresse() + ")");
       }
     }
-
+  
     System.out.println("==============================\n");
+
   }
 
   /**
-   * Méthode pour les interaction avec l'utilisateur.
+   * Méthode d'interaction avec l'utilisateur.
    */
   public void interaction() {
     Scanner sc = new Scanner(System.in);
@@ -58,9 +60,17 @@ public class VueListeReseaux implements Observer {
       System.out.println("4. Quitter");
       System.out.print("Choix : ");
 
-      int c = sc.nextInt();
-      sc.nextLine();
+       
+      String ligne = sc.nextLine();
+      int c;
+      try {
+        c = Integer.parseInt(ligne);
+      } catch (NumberFormatException e) {
+        System.out.println("Choix incorrect, recommencez.");
+        continue;
+      }
 
+      this.afficher();
       switch (c) {
 
         case 1:
@@ -73,20 +83,23 @@ public class VueListeReseaux implements Observer {
           System.out.print("Nb machines/switch : ");
           int nbM = sc.nextInt();
           sc.nextLine();
-
+        
           Reseau r = ReseauFactory.creerReseauStandard(nom, adr, nbS, nbM);
-          systeme.ajouterReseau(r);
+          boolean ajoute = systeme.ajouterReseau(r);
+          if (!ajoute) {
+            System.out.println("Le réseau n'a pas pu être ajouté.");
+          }
           break;
-
+        
         case 2:
           System.out.print("Nom réseau à supprimer : ");
           systeme.supprimerReseau(sc.nextLine());
           break;
-
+        
         case 3:
           System.out.print("Nom du réseau à ouvrir : ");
           Reseau res = systeme.getReseau(sc.nextLine());
-
+        
           if (res != null) {
             VueReseau vueR = new VueReseau(systeme, res);
             vueR.interaction();
@@ -94,9 +107,13 @@ public class VueListeReseaux implements Observer {
             System.out.println("Réseau introuvable.");
           }
           break;
-
+        
         case 4:
           return;
+             
+        default:
+          System.out.println("Choix incorrect, recommencez.");
+          break;
       }
     }
   }

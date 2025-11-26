@@ -17,7 +17,6 @@ public class VisiteurToutesMachines implements Visiteur {
 
   @Override
   public void agitSur(Switch sw) {
-    // TODO Auto-generated method stub
     
   }
 

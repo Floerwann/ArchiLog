@@ -1,6 +1,6 @@
 package vues;
 
-import application.Systeme;
+import systeme.Systeme;
 
 /**
  * Classe qui permet de vérifier le fonctionnement des Vues.

@@ -1,4 +1,4 @@
-package application;
+package systeme;
 
 /**
  * Interface Observer.
@@ -7,5 +7,5 @@ public interface Observer {
   /**
    * Méthode mise à jour.
    */
-  void mettreAJour();
+  void mettreAjour();
 }
