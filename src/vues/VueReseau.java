@@ -9,11 +9,20 @@ import java.util.List;
 import application.Machine;
 import application.Switch;
 
+/**
+ * Classe de la VueReseau.
+ */
 public class VueReseau implements Observer {
 
   private Systeme systeme;
   private Reseau reseau;
   
+  /**
+   * Constructeur de la VueReseau.
+
+   * @param systeme Systeme
+   * @param reseau Reseau dans lequel on va utiliser la Vue
+   */
   public VueReseau(Systeme systeme, Reseau reseau) {
     this.systeme = systeme;
     this.reseau = reseau;
@@ -25,6 +34,9 @@ public class VueReseau implements Observer {
     afficher();
   }
   
+  /**
+   * Méthode d'affichage de la Vue.
+   */
   public void afficher() {
     System.out.println("\n===== RÉSEAU : " + reseau.getNom() + " =====");
     System.out.println("Adresse : " + reseau.getAdresse());
@@ -50,7 +62,6 @@ public class VueReseau implements Observer {
    */
   public void interaction() {
     Scanner sc = new Scanner(System.in);
-
 
     while (true) {
       System.out.println("1. Modifier nom");
@@ -156,6 +167,5 @@ public class VueReseau implements Observer {
           break;
       }
     }
-
   }
 }

@@ -1,7 +1,8 @@
 package reseau;
 
-import java.util.List;
 import application.Reseau;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Classe qui permet de vérifier que la classe ReseauFileFactory fonctionne bien.
@@ -15,11 +16,11 @@ public class TestApp {
    */
   public static void main(String[] args) {
     try {
-      // Charger le fichier JSON de test
+      List<String> erreurs = new ArrayList<>();
       List<Reseau> reseaux =
-          ReseauFileFactory.creerReseauDepuisFichier("donnees/reseaux_multi_test.json");
+          ReseauFileFactory.creerReseauDepuisFichier("donnees/reseaux_multi_test.json", erreurs);
 
-      // Afficher tous les réseaux chargés
+
       System.out.println("=== Réseaux chargés ===");
       for (Reseau r : reseaux) {
         System.out.println("------------------------");
@@ -37,6 +38,9 @@ public class TestApp {
         } else {
           System.out.println("Reseau non valide");
         }
+      }
+      for (String err : erreurs) {
+        System.out.println(err);
       }
 
     } catch (Exception e) {

@@ -24,7 +24,7 @@ public class ReseauFactory {
    */
   public static Reseau creerReseauStandard(String nom, String adresseReseau, 
                                            int nbSwitchs, int nbMachinesParSwitch) {
-    // Calcul de la passerelle (adresse réseau + ".1")
+
     String[] parts = adresseReseau.split("\\.");
     String prefix = parts[0] + "." + parts[1] + "." + parts[2] + ".";
     String passerelle = prefix + "1";
@@ -32,7 +32,7 @@ public class ReseauFactory {
     List<Switch> switchs = new ArrayList<>();
     List<Machine> machines = new ArrayList<>();
 
-    int ipCourante = 2; // Après la passerelle
+    int ipCourante = 2;
 
 
     for (int i = 0; i < nbSwitchs; i++) {

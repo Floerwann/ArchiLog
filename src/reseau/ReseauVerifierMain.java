@@ -19,25 +19,25 @@ public class ReseauVerifierMain {
   public static void main(String[] args) {
 
 
-    // Création des switchs
+
     Switch switch1 = new Switch(2, true);
     Switch switch2 = new Switch(3, true);
-    Switch switch3 = new Switch(256, false); // IP invalide volontaire
+    Switch switch3 = new Switch(777, false); 
     List<Switch> lesSwitchs = new ArrayList<>();
     lesSwitchs.add(switch1);
     lesSwitchs.add(switch2);
     lesSwitchs.add(switch3);
 
-    // Création des machines
+
     Machine machine1 = new Machine(4, "Machine1", switch1);
     Machine machine2 = new Machine(5, "Machine2", switch2);
-    Machine machine3 = new Machine(3, "Machine3", switch2); // IP dupliquée volontaire
+    Machine machine3 = new Machine(5, "Machine3", switch2);
     List<Machine> lesMachines = new ArrayList<>();
     lesMachines.add(machine1);
     lesMachines.add(machine2);
     lesMachines.add(machine3);
 
-    // Création du réseau
+
     Reseau reseau = new Reseau(
         "Reseau1",
         "192.168.1.0",
@@ -47,10 +47,10 @@ public class ReseauVerifierMain {
         lesSwitchs
     );
 
-    // Vérification du réseau
+
     boolean valide = ReseauVerifier.verifierReseau(reseau);
 
-    // Affichage du rapport
+
     List<String> erreurs = ReseauVerifier.getErreurs();
     System.out.println("Le réseau est valide ? " + valide);
     System.out.println("Rapport d'erreurs :");

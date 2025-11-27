@@ -1,37 +1,57 @@
 package systeme;
 
+import application.Reseau;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import application.Reseau;
 import reseau.ReseauFileFactory;
 import reseau.ReseauVerifier;
 import visiteurs.Visiteur;
 
+/**
+ * Classe Systeme.
+ */
 public class Systeme {
 
 
   private List<Reseau> reseaux;
   private List<Observer> observers = new ArrayList<>();
   
+  /**
+   * Constructeur du Systeme.
+   */
   public Systeme() {
     this.reseaux = new ArrayList<>();
   }
   
+  /**
+   * Méthode d'ajout d'un Observer.
+
+   * @param obs Observer a ajouté
+   */
   public void ajouterObserver(Observer obs) {
     observers.add(obs);
   }
   
+  /**
+   * Méthode notification des Observer.
+   */
   public void notifierObservers() {
     for (Observer o : observers) {
       o.mettreAjour();
     }
   }
   
-  // --- Ajout d'un réseau avec vérification ---
+  /**
+   * Méthode d'ajout d'un réseau avec vérification.
+
+   * @param reseau Reseau a ajouté
+   * @return True si le reseau est bien ajouté, false sinon
+   */
   public boolean ajouterReseau(Reseau reseau) {
-    if(this.getReseau(reseau.getNom()) != null) {
-      System.out.println("Ajout annulé : un réseau avec le nom " + reseau.getNom() + " existe déjà");
+    if (this.getReseau(reseau.getNom()) != null) {
+      System.out.println("Ajout annulé : un réseau avec le nom " + reseau.getNom() 
+          + " existe déjà");
       return false;
     }
     
@@ -45,7 +65,13 @@ public class Systeme {
     return true;
   }
   
-  // --- Mise à jour d'un réseau avec vérification ---
+  /**
+   * Méthode de mise à jour d'un réseau avec vérification.
+
+   * @param nom Nom du reseau a mettre à jour
+   * @param rmaj Reseau mise à jour
+   * @return True s'il est bien modifié, sinon false
+   */
   public boolean majReseau(String nom, Reseau rmaj) {
     if (!ReseauVerifier.verifierReseau(rmaj)) {
       System.out.println("Réseau invalide, mise à jour annulée : " + rmaj.getNom());
@@ -63,7 +89,13 @@ public class Systeme {
     return false;
   }
   
-  // --- Suppression d'un réseau ---
+
+  /**
+   * Méthode de suppression d'un réseau.
+
+   * @param nom Nom du réseau a supprimé
+   * @return True si le réseau est bien supprimé, sinon false
+   */
   public boolean supprimerReseau(String nom) {
     Reseau r = getReseau(nom);
     if (r == null) {
@@ -75,6 +107,12 @@ public class Systeme {
     return true;
   }
   
+  /**
+   * Méthode get d'un réseau.
+
+   * @param nom Nom du réseau a retourné
+   * @return Retourne le réseau s'il existe, sinon null
+   */
   public Reseau getReseau(String nom) {
     for (Reseau reseau : reseaux) {
       if (reseau.getNom().equals(nom)) {
@@ -88,10 +126,21 @@ public class Systeme {
     return this.reseaux;
   }
   
+  /**
+   * Méthode pour savoir le nombre de réseau du Syteme.
+
+   * @return Le nombre de réseau du Systeme
+   */
   public int nombreReseaux() {
     return this.reseaux.size();
   }
   
+  /**
+   * Méthode pour verifier l'état d'un réseau.
+
+   * @param nom Nom du réseau a vérifié
+   * @return True si le réseau est valide, sinon false
+   */
   public boolean verifierReseau(String nom) {
     Reseau r = this.getReseau(nom);
     if (r == null) {
@@ -100,19 +149,40 @@ public class Systeme {
     return ReseauVerifier.verifierReseau(r);
   }
   
-  public void chargerDepuisFichier(String path) throws IOException {
-    List<Reseau> charges = ReseauFileFactory.creerReseauDepuisFichier(path);
+  /**
+   * Méthode qui permet de charger un réseau depuis un fichier.
+
+   * @param path Chemni du fichier.
+   * @throws IOException Exception
+   */
+  public List<String> chargerDepuisFichier(String path) {
+    List<String> erreurs = new ArrayList<>();
+    List<Reseau> charges;
+    try {
+      charges = ReseauFileFactory.creerReseauDepuisFichier(path, erreurs);
+    } catch (IOException e) {
+      erreurs.add("Erreur lecture fichier : " + e.getMessage());
+      return erreurs;
+    }
+
     for (Reseau r : charges) {
-      if (!ReseauVerifier.verifierReseau(r)) {
-        System.out.println("Réseau invalide, non chargé : " + r.getNom());
-        ReseauVerifier.getErreurs().forEach(System.out::println);
-      } else {
-        this.reseaux.add(r);
+      if (getReseau(r.getNom()) != null) {
+        erreurs.add("Réseau déjà existant, non chargé : " + r.getNom());
+      } else if (!ajouterReseau(r)) {
+        erreurs.add("Impossible d'ajouter le réseau : " + r.getNom());
       }
     }
-    this.notifierObservers();
+
+    return erreurs;
   }
+
   
+  /**
+   * Méthode d'affichage pour les visiteurs.
+
+   * @param nomReseau Nom du réseau a appliqué au visiteur
+   * @param unVisiteur Le visiteur agissant sur le réseau.
+   */
   public void afficherAvecVisiteur(String nomReseau, Visiteur unVisiteur) {
     Reseau r = getReseau(nomReseau);
     if (r != null) {

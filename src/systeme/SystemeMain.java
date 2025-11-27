@@ -10,7 +10,13 @@ import java.util.List;
  * Classe Main pour la classe Systeme.
  */
 public class SystemeMain {
-public static void main(String[] args) {
+  
+  /**
+   * MAain de la classe.
+
+   * @param args Arguments
+   */
+  public static void main(String[] args) {
 
 
     Systeme sys = new Systeme();

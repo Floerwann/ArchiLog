@@ -3,7 +3,7 @@
     {
       "nomReseau": "ReseauTestEntrepriseA",
       "adresseReseau": "192.168.10.0",
-      "masque": 24,
+      "masque": 2,
       "passerelle": "192.168.10.1",
 
       "switches": [
@@ -20,9 +20,9 @@
 
     {
       "nomReseau": "ReseauTestEntrepriseB",
-      "adresseReseau": "10.0.0.0",
+      "adresseReseau": "777.0.0.0",
       "masque": 25,
-      "passerelle": "10.0.0.1",
+      "passerelle": "192.0.0.1",
 
       "switches": [
         { "numeroIp": 2, "estManage": true },

@@ -1,11 +1,12 @@
 package tests;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import application.Reseau;
+import org.junit.jupiter.api.Test;
 import reseau.ReseauFactory;
 import reseau.ReseauVerifier;
-import org.junit.jupiter.api.Test;
 
 /**
  * Classe de Test pour la classe ReseauVerifier.

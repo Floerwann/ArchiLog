@@ -5,10 +5,11 @@ import static org.junit.jupiter.api.Assertions.*;
 import application.Machine;
 import application.Reseau;
 import application.Switch;
-import reseau.ReseauFactory;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import reseau.ReseauFactory;
+
 
 /**
  * Classe de Test pour la classe ReseauFactory.
@@ -30,11 +31,11 @@ public class ReseauFactoryTest {
     assertEquals("192.168.10.1", reseau.getPasserelle());
     assertEquals(24, reseau.getMasqueSousReseau());
 
-    // Switchs
+
     List<Switch> switchs = reseau.getLesSwitchs();
     assertEquals(2, switchs.size());
 
-    // Machines
+
     List<Machine> machines = reseau.getLesMachines();
     assertEquals(6, machines.size());
   }
@@ -50,10 +51,8 @@ public class ReseauFactoryTest {
     );
     List<Switch> s = reseau.getLesSwitchs();
 
-    // Switch 0 → IP = 2
     assertEquals(2, s.get(0).getNumeroIp());
 
-    // Switch 1 → IP = 4 (car une machine a pris l'IP 3)
     assertEquals(4, s.get(1).getNumeroIp());
   }
 
@@ -69,17 +68,14 @@ public class ReseauFactoryTest {
 
     List<Machine> machines = reseau.getLesMachines();
 
-    // IP attendues : 3, 4, 5
     assertEquals(3, machines.get(0).getNumeroIp());
     assertEquals(4, machines.get(1).getNumeroIp());
     assertEquals(5, machines.get(2).getNumeroIp());
 
-    // Vérifier le nom des machines
     assertEquals("Machine_0_0", machines.get(0).getNom());
     assertEquals("Machine_0_1", machines.get(1).getNom());
     assertEquals("Machine_0_2", machines.get(2).getNom());
 
-    // Vérifier qu'elles pointent vers le bon switch
     Switch sw = reseau.getLesSwitchs().get(0);
     assertSame(sw, machines.get(0).getLeSwitch());
     assertSame(sw, machines.get(1).getLeSwitch());
@@ -109,6 +105,6 @@ public class ReseauFactoryTest {
     );
 
     assertTrue(reseau.getLesSwitchs().isEmpty());
-    assertTrue(reseau.getLesMachines().isEmpty()); // car pas de switch ⇒ pas de machines créées
+    assertTrue(reseau.getLesMachines().isEmpty());
   }
 }
